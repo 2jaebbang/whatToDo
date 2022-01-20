@@ -5,7 +5,9 @@
       "@apis/*": ["src/apis/*"],
       "@components/*": ["src/components/*"],
       "@pages/*": ["src/pages/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@types/*": ["src/types/*"],
+      "@resources/*": ["src/resources/*"]
     }
   }
 }

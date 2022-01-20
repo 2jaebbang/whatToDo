@@ -5,11 +5,15 @@ import CampDetail from "@pages/CampDetail";
 import CampApply from "@pages/CampApply";
 import Community from "@pages/Community";
 import Nav from "@components/Nav";
+import { ContentsContainer } from "@components/ContentsContainer";
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Nav />
+        <ContentsContainer>
+          <Nav />
+        </ContentsContainer>
+
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/detail" element={<CampDetail />}></Route>
