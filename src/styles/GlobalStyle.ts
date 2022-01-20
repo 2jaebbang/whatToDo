@@ -1,5 +1,5 @@
 import { createGlobalStyle } from "styled-components";
-import { defalutTheme } from "./theme";
+import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
   *, *::before, *::after {
@@ -7,7 +7,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: ${defalutTheme.fonts.family.base};
+    font-family: ${theme.fonts.family.base};
+    width: 100%;
+    height: 100%;
   }
 `;
 
