@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { CONTENTS_MAX_WIDTH } from "@styles/constants";
-import { headline2CSS } from "@styles/css";
+import { CONTENTS_MAX_WIDTH } from "styles/constants";
+import { headline2CSS } from "styles/css";
 import userIcon from "../resources/images/userIcon.svg";
 export default function Nav() {
   return (

@@ -1,11 +1,11 @@
 import React from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import Home from "@pages/Home";
-import CampDetail from "@pages/CampDetail";
-import CampApply from "@pages/CampApply";
-import Community from "@pages/Community";
-import Nav from "@components/Nav";
-import { ContentsContainer } from "@components/ContentsContainer";
+import Home from "pages/Home";
+import CampDetail from "pages/CampDetail";
+import CampApply from "pages/CampApply";
+import Community from "pages/Community";
+import Nav from "components/Nav";
+import { ContentsContainer } from "components/ContentsContainer";
 function App() {
   return (
     <div className="App">
