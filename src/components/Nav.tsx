@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { CONTENTS_MAX_WIDTH } from "@styles/constants";
 import { headline2CSS } from "@styles/css";
@@ -6,10 +7,12 @@ import userIcon from "../resources/images/userIcon.svg";
 export default function Nav() {
   return (
     <Container>
-      <Title>WhatToDo</Title>
-      <UserButton>
+      <Link to="/" style={{ textDecoration: "none" }}>
+        <Title>WhatToDo</Title>
+      </Link>
+      <Link to="/">
         <UserIcon src={userIcon} />
-      </UserButton>
+      </Link>
     </Container>
   );
 }
@@ -29,11 +32,6 @@ const Title = styled(headline2CSS)`
   font-style: normal;
   line-height: 32px;
   letter-spacing: -0.07em;
-`;
-
-const UserButton = styled.div`
-  color: white;
-  cursor: pointer;
 `;
 
 const UserIcon = styled.img`
