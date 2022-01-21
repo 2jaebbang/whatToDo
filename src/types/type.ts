@@ -1,6 +1,6 @@
 export interface ICamp {
   id: number;
-  type: "popular" | "discount";
+  type: "인기" | "할인";
   status: "모집전" | "모집중" | "모집완료";
   category?: string;
   skill?: string;
@@ -20,5 +20,5 @@ export interface ICommunity {
 export interface IComment {
   id: number;
   nickName: string;
-  comment: string;
+  content: string;
 }
