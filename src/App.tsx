@@ -10,10 +10,6 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <ContentsContainer>
-          <Nav />
-        </ContentsContainer>
-
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/detail" element={<CampDetail />}></Route>
