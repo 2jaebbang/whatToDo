@@ -4,7 +4,7 @@ export interface ICamp {
   status: "모집전" | "모집중" | "모집완료";
   category?: string;
   skill?: string;
-  campName: string;
+  title: string;
   thumbnail: string;
   dateStart: string;
 }
@@ -20,5 +20,6 @@ export interface ICommunity {
 export interface IComment {
   id: number;
   nickName: string;
+  profile: string;
   content: string;
 }
