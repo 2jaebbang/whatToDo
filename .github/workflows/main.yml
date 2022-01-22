@@ -18,5 +18,6 @@ jobs:
 
     - name: Deploy react app to github pages
       uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
-      env:
-         CI: ""
+      
+    - name: build
+      run: unset CI && npm run build
