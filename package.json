@@ -1,6 +1,6 @@
 {
-  "homepage": "https://2jaebbang.github.io/plant/",
-  "name": "plant",
+  "homepage": "https://2jaebbang.github.io/whatToDo/",
+  "name": "whatodo",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -52,6 +52,7 @@
     "eslint": "^8.7.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.3.0",
+    "eslint-config-react-app": "^7.0.0",
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.0.0",
