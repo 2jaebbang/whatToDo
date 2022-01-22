@@ -3,7 +3,8 @@ import { ICamp, ICommunity } from "types/type";
 import Nav from "components/Nav";
 import CampCard from "components/CampCard";
 import CommunityCard from "components/CommunityCard";
-
+import Footer from "components/Footer";
+import Icon from "resources/images/sqlImage.png";
 const camp: ICamp = {
   id: 0,
   type: "인기",
@@ -11,7 +12,7 @@ const camp: ICamp = {
   category: "IT",
   skill: "SQL",
   title: "개발자 없이 SQL로 데이터 추출하고 대시보드 만들기",
-  thumbnail: " ",
+  thumbnail: Icon,
   dateStart: "2022-02-13",
 };
 
@@ -32,7 +33,7 @@ export default function Home() {
       <header>header</header>
       <section>
         <div>인기 부트 갬프</div>
-        <div style={{ display: "flex", padding: "20px" }}>
+        <div style={{ display: "flex", gap: "20px" }}>
           <CampCard camp={camp} />
           <CampCard camp={camp} />
           <CampCard camp={camp} />
@@ -41,7 +42,7 @@ export default function Home() {
       </section>
       <section>
         <div>특가 할인 캠프</div>
-        <div style={{ display: "flex", padding: "20px" }}>
+        <div style={{ display: "flex", gap: "20px" }}>
           <CampCard camp={camp} />
           <CampCard camp={camp} />
           <CampCard camp={camp} />
@@ -50,13 +51,13 @@ export default function Home() {
       </section>
       <div>banner</div>
       <section>
-        <div style={{ display: "flex", padding: "20px" }}>
+        <div style={{ display: "flex", gap: "20px" }}>
           <CommunityCard community={community} />
           <CommunityCard community={community} />
           <CommunityCard community={community} />
         </div>
       </section>
-      <footer>footer</footer>
+      <Footer />
     </div>
   );
 }

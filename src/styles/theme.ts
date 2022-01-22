@@ -41,7 +41,7 @@ export const theme = {
       xxxl: "28px",
     },
     weight: {
-      normal: 500,
+      normal: 400,
       bold: 700,
     },
     lineheight: {
