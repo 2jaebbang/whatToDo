@@ -28,9 +28,9 @@ export default function CommunityCard({
 }
 
 const Container = styled.div`
-           backgroundSize: "cover",
-           backgroundPosition: "center",
-           padding: "20px",
+  background-size: "cover";
+  background-position: "center";
+  padding: "20px";
 `;
 
 const CommentContainer = styled.div``;

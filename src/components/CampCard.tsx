@@ -16,7 +16,7 @@ export default function CampCard({ camp }: { camp: ICamp }) {
 }
 
 const Container = styled.div`
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    padding: "20px",
+  background-size: "cover";
+  background-position: "center";
+  padding: "20px";
 `;
