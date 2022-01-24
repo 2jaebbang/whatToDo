@@ -1,42 +1,73 @@
-import React from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { CONTENTS_MAX_WIDTH } from "styles/constants";
-import { headline2CSS } from "styles/css";
-import userIcon from "resources/images/userIcon.png";
+import styled, { css } from "styled-components";
+import { maxWidth } from "styles/mixin";
+import LogoPrimary from "resources/images/logo-primary.png";
+import LogoWhite from "resources/images/logo-white.png";
+import UserPrimary from "resources/images/user-primary.png";
+import UserBlack from "resources/images/user-black.png";
+
 export default function Nav() {
+  const [isScrolled, setIsScrolled] = useState<boolean>(false);
+
+  useEffect(() => {
+    changeBackground();
+    window.addEventListener("scroll", changeBackground);
+  });
+
+  const changeBackground = () => {
+    if (window.scrollY >= 80) {
+      setIsScrolled(true);
+    } else {
+      setIsScrolled(false);
+    }
+  };
+
   return (
-    <div style={{ background: "#6499ff" }}>
-      <Container style={{}}>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <Title>WhatToDo</Title>
+    <Container isScrolled={isScrolled}>
+      <div className="main">
+        <Link to="/">
+          <img
+            className="logo"
+            src={isScrolled ? LogoPrimary : LogoWhite}
+          ></img>
         </Link>
         <Link to="/">
-          <UserIcon src={userIcon} />
+          <img
+            className="userIcon"
+            src={isScrolled ? UserPrimary : UserBlack}
+          ></img>
         </Link>
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 }
 
-const Container = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
-  max-width: ${CONTENTS_MAX_WIDTH};
-  height: 64px;
-  background: #6499ff;
-`;
+const Container = styled.nav<{ isScrolled: boolean }>`
+  position: fixed;
+  width: 100%;
+  //z-index: 100;
 
-const Title = styled(headline2CSS)`
-  color: white;
-  font-family: Roboto Slab;
-  font-style: normal;
-  line-height: 32px;
-  letter-spacing: -0.07em;
-`;
+  ${(props) =>
+    props.isScrolled &&
+    css`
+      background-color: white;
+      transition: 0.5s;
+    `}
 
-const UserIcon = styled.img`
-  color: white;
+  .main {
+    ${maxWidth}
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+  }
+  .logo {
+    width: 80px;
+    height: 22px;
+  }
+  .userIcon {
+    width: 24px;
+    height: 24px;
+  }
 `;
