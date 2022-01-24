@@ -4,6 +4,7 @@ import Nav from "components/Nav";
 import Footer from "components/Footer";
 import CampCard from "components/CampCard";
 import CommunityCard from "components/CommunityCard";
+import sqlImage from "resources/images/sqlImage.png";
 // import Footer from "components/Footer";
 const camp: ICamp = {
   id: 0,
@@ -12,7 +13,7 @@ const camp: ICamp = {
   category: "IT",
   skill: "SQL",
   title: "개발자 없이 SQL로 데이터 추출하고 대시보드 만들기",
-  thumbnail: "",
+  thumbnail: sqlImage,
   dateStart: "2022-02-13",
 };
 

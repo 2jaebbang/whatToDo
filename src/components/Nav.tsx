@@ -46,7 +46,7 @@ export default function Nav() {
 const Container = styled.nav<{ isScrolled: boolean }>`
   position: fixed;
   width: 100%;
-  //z-index: 100;
+  z-index: 100;
 
   ${(props) =>
     props.isScrolled &&
