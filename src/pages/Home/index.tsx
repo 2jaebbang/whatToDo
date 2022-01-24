@@ -2,9 +2,11 @@ import React from "react";
 import { ICamp, ICommunity } from "types/type";
 import Nav from "components/Nav";
 import Footer from "components/Footer";
+import { Header } from "pages/Home/Header";
 import CampCard from "components/CampCard";
 import CommunityCard from "components/CommunityCard";
 import sqlImage from "resources/images/sqlImage.png";
+import styled from "styled-components";
 // import Footer from "components/Footer";
 const camp: ICamp = {
   id: 0,
@@ -29,9 +31,9 @@ const community: ICommunity = {
 
 export default function Home() {
   return (
-    <div>
+    <Container>
       <Nav />
-      <header>header</header>
+      <Header />
       <section>
         <div>인기 부트 갬프</div>
         <div style={{ display: "flex", gap: "20px" }}>
@@ -59,6 +61,10 @@ export default function Home() {
         </div>
       </section>
       <Footer />
-    </div>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  margin: 0 auto;
+`;
