@@ -29,7 +29,7 @@ export default function Nav() {
         <Link to="/">
           <img
             className="logo"
-            src={isScrolled ? LogoPrimary : LogoWhite}
+            src={isScrolled ? LogoWhite : LogoPrimary}
           ></img>
         </Link>
         <Link to="/">

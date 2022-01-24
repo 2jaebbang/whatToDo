@@ -1,6 +1,7 @@
 import React from "react";
 import { ICamp, ICommunity } from "types/type";
 import Nav from "components/Nav";
+import Footer from "components/Footer";
 import CampCard from "components/CampCard";
 import CommunityCard from "components/CommunityCard";
 // import Footer from "components/Footer";
@@ -56,6 +57,7 @@ export default function Home() {
           <CommunityCard community={community} />
         </div>
       </section>
+      <Footer />
     </div>
   );
 }
