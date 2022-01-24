@@ -8,8 +8,9 @@ const Footer = () => {
   return (
     <Container>
       <div className="main">
-        <img className="logo" src={LogoPrimary}></img>
-
+        <ContainerLogo>
+          <img className="logo" src={LogoPrimary}></img>
+        </ContainerLogo>
         <ContainerInfo>
           <div style={{ paddingBottom: "20px" }}>
             대표: 내이름. 서울특별시 중구 한강대로 416, 서울스퀘어 15층 101호
@@ -29,14 +30,11 @@ const Footer = () => {
 };
 
 const Container = styled.footer`
-  position: fixed;
-  width: 100%;
   background-color: ${colors.gray5};
   //z-index: 100;
   .main {
     ${maxWidth}
     display: flex;
-    justify-content: space-between;
     padding: 20px;
     gap: 20px;
   }
@@ -50,8 +48,13 @@ const Container = styled.footer`
   }
 `;
 
+const ContainerLogo = styled.div`
+  flex: 1;
+`;
+
 const ContainerInfo = styled.div`
-  ${fonts.Caption}
+  flex: 4;
+  ${fonts.Caption};
 `;
 
 const ContainerSNS = styled.div`
