@@ -1,4 +1,4 @@
-import React from "react";
+import { useState, useEffect } from "react";
 import { ICamp, ICommunity } from "types/type";
 import Nav from "components/Nav";
 import Footer from "components/Footer";
@@ -7,8 +7,9 @@ import CampCard from "components/CampCard";
 import CommunityCard from "components/CommunityCard";
 import sqlImage from "resources/images/sqlImage.png";
 import styled from "styled-components";
+import { CampSection } from "./CampSection";
 // import Footer from "components/Footer";
-const camp: ICamp = {
+const campMock: ICamp = {
   id: 0,
   type: "인기",
   status: "모집중",
@@ -19,7 +20,7 @@ const camp: ICamp = {
   dateStart: "2022-02-13",
 };
 
-const community: ICommunity = {
+const communityMock: ICommunity = {
   id: 0,
   category: "취업고민",
   title: "합격 메일 답장 어떻게 할까요?",
@@ -30,34 +31,33 @@ const community: ICommunity = {
 };
 
 export default function Home() {
+  const [popularCamps, setPopularCamps] = useState<ICamp[]>([]);
+  const [saleCamps, setSaleCamps] = useState<ICamp[]>([]);
+
+  useEffect(() => {
+    setPopularCamps([campMock, campMock, campMock, campMock]);
+    setSaleCamps([campMock, campMock, campMock, campMock]);
+  }, []);
   return (
     <Container>
       <Nav />
       <Header />
-      <section>
-        <div>인기 부트 갬프</div>
-        <div style={{ display: "flex", gap: "20px" }}>
-          <CampCard camp={camp} />
-          <CampCard camp={camp} />
-          <CampCard camp={camp} />
-          <CampCard camp={camp} />
-        </div>
-      </section>
-      <section>
-        <div>특가 할인 캠프</div>
-        <div style={{ display: "flex", gap: "20px" }}>
-          <CampCard camp={camp} />
-          <CampCard camp={camp} />
-          <CampCard camp={camp} />
-          <CampCard camp={camp} />
-        </div>
-      </section>
+      <CampSection
+        title="인기 부트 캠프"
+        camps={popularCamps}
+        isHeadField={false}
+      />
+      <CampSection
+        title="특가 할인 캠프"
+        camps={saleCamps}
+        isHeadField={true}
+      />
       <div>banner</div>
       <section>
         <div style={{ display: "flex", gap: "20px" }}>
-          <CommunityCard community={community} />
-          <CommunityCard community={community} />
-          <CommunityCard community={community} />
+          <CommunityCard community={communityMock} />
+          <CommunityCard community={communityMock} />
+          <CommunityCard community={communityMock} />
         </div>
       </section>
       <Footer />

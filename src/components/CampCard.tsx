@@ -7,16 +7,17 @@ import { maxWidth } from "styles/mixin";
 
 interface IProps {
   camp: ICamp;
+  isHeadField: boolean;
 }
 
-export default function CampCard({ camp }: IProps) {
+export default function CampCard({ camp, isHeadField }: IProps) {
   return (
     <Link to={`/camp/${camp.id}`}>
       <Container bgImg={camp.thumbnail}>
         <OpacityBlack />
         <div className="camp-content">
           <div className="camp-head">
-            {camp.category}/{camp.skill}
+            {isHeadField ? `${camp.category}/${camp.skill}` : camp.status}
           </div>
           <div className="camp-title">{camp.title}</div>
           <div className="camp-start-date">
