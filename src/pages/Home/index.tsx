@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { ICamp, ICommunity } from "types/type";
-import Nav from "components/Nav";
-import Footer from "components/Footer";
+import { Nav, Footer, CommunityCard } from "components/index";
 import { Header } from "pages/Home/Header";
 import Banner from "pages/Home/Banner";
-import CommunityCard from "components/CommunityCard";
 import sqlImage from "resources/images/sqlImage.png";
+import snsIcon from "resources/images/snsIcon.png";
 import styled from "styled-components";
 import { CampSection } from "./CampSection";
+
 // import Footer from "components/Footer";
 const campMock: ICamp = {
   id: 0,
@@ -26,7 +26,18 @@ const communityMock: ICommunity = {
   title: "합격 메일 답장 어떻게 할까요?",
   content: "고칠 부분이 있는지 봐주시면 감사하겠습니다!",
   comments: [
-    { id: 0, nickName: "멘토1342", profile: "", content: "안녕하세요" },
+    {
+      id: 0,
+      nickName: "멘토1342",
+      profile: snsIcon,
+      content: "안녕하세요 먼저 면접까지 본 사람으로",
+    },
+    {
+      id: 1,
+      nickName: "멘토1342",
+      profile: snsIcon,
+      content: "안녕하세요 먼저 면접까지 본 사람으로",
+    },
   ],
 };
 
@@ -55,6 +66,7 @@ export default function Home() {
       <Banner />
       <section>
         <div style={{ display: "flex", gap: "20px" }}>
+          <CommunityCard community={communityMock} />
           <CommunityCard community={communityMock} />
           <CommunityCard community={communityMock} />
           <CommunityCard community={communityMock} />
