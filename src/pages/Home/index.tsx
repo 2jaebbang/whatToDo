@@ -6,7 +6,8 @@ import Banner from "pages/Home/Banner";
 import sqlImage from "resources/images/sqlImage.png";
 import snsIcon from "resources/images/snsIcon.png";
 import styled from "styled-components";
-import { CampSection } from "./CampSection";
+import CampSection from "./CampSection";
+import CommunitySection from "./CommunitySection";
 
 // import Footer from "components/Footer";
 const campMock: ICamp = {
@@ -44,10 +45,12 @@ const communityMock: ICommunity = {
 export default function Home() {
   const [popularCamps, setPopularCamps] = useState<ICamp[]>([]);
   const [saleCamps, setSaleCamps] = useState<ICamp[]>([]);
+  const [communities, setCommunites] = useState<ICommunity[]>([]);
 
   useEffect(() => {
     setPopularCamps([campMock, campMock, campMock, campMock]);
     setSaleCamps([campMock, campMock, campMock, campMock]);
+    setCommunites([communityMock, communityMock, communityMock, communityMock]);
   }, []);
   return (
     <Container>
@@ -64,14 +67,11 @@ export default function Home() {
         isHeadField={true}
       />
       <Banner />
-      <section>
-        <div style={{ display: "flex", gap: "20px" }}>
-          <CommunityCard community={communityMock} />
-          <CommunityCard community={communityMock} />
-          <CommunityCard community={communityMock} />
-          <CommunityCard community={communityMock} />
-        </div>
-      </section>
+      <CommunitySection
+        title="커뮤니티"
+        communities={communities}
+        isTopView={true}
+      />
       <Footer />
     </Container>
   );
