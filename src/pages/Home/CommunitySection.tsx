@@ -1,26 +1,30 @@
-import { CampCard } from "components/index";
+import { CommunityCard } from "components/index";
 import styled from "styled-components";
 import fonts from "styles/fonts";
 import { maxWidth } from "styles/mixin";
-import { ICamp } from "types/type";
+import { ICommunity } from "types/type";
 
 interface IProps {
   title: string;
-  camps: ICamp[];
-  isHeadField?: boolean;
+  communities: ICommunity[];
+  isTopView?: boolean;
 }
 
-export default function CampSection({
+export default function CommunitySection({
   title,
-  camps,
-  isHeadField = false,
+  communities,
+  isTopView = false,
 }: IProps) {
   return (
     <Container>
       <div className="section-title">{title}</div>
       <div className="flex">
-        {camps.map((camp, index) => (
-          <CampCard key={index} camp={camp} isHeadField={isHeadField} />
+        {communities.map((community, index) => (
+          <CommunityCard
+            key={index}
+            community={community}
+            isTopView={isTopView}
+          />
         ))}
       </div>
     </Container>
@@ -29,7 +33,7 @@ export default function CampSection({
 
 const Container = styled.section`
   ${maxWidth}
-  padding: 16px 0px 48px;
+  padding: 16px 0px 240px;
   .section-title {
     ${fonts.H2};
     padding-bottom: 8px;

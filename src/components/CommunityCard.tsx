@@ -8,45 +8,33 @@ interface IProps {
   isTopView: boolean;
 }
 
-export default function CommunityCard({
-  community,
-}: {
-  community: ICommunity;
-}) {
+export default function CommunityCard({ community, isTopView }: IProps) {
   return (
     <Container>
       <div className="community-tag-container">
-        <CommunityTag bgColor={colors.primary1} style={{ color: "white" }}>
-          조회수 TOP
-        </CommunityTag>
+        {isTopView ? (
+          <CommunityTag bgColor={colors.primary1} style={{ color: "white" }}>
+            조회수 TOP
+          </CommunityTag>
+        ) : (
+          <></>
+        )}
+
         <CommunityTag bgColor={colors.gray5}>{community.category}</CommunityTag>
       </div>
       <div className="community-title">{community.title}</div>
       <div className="community-content">{community.content}</div>
-      <CommentSection>
-        <div>
-          <img
-            className="comment-profile"
-            src={community.comments[0].profile}
-          ></img>
-        </div>
-        <div className="comment-info">
-          <div className="comment-name">{community.comments[0].nickName}</div>
-          <div className="comment-content">{community.comments[0].content}</div>
-        </div>
-      </CommentSection>
-      <CommentSection>
-        <div>
-          <img
-            className="comment-profile"
-            src={community.comments[0].profile}
-          ></img>
-        </div>
-        <div className="comment-info">
-          <div className="comment-name">{community.comments[0].nickName}</div>
-          <div className="comment-content">{community.comments[0].content}</div>
-        </div>
-      </CommentSection>
+      {community.comments.map((comment, index) => (
+        <CommentSection key={index}>
+          <div>
+            <img className="comment-profile" src={comment.profile}></img>
+          </div>
+          <div className="comment-info">
+            <div className="comment-name">{comment.nickName}</div>
+            <div className="comment-content">{comment.content}</div>
+          </div>
+        </CommentSection>
+      ))}
       <div className="more-comments">+더보기</div>
     </Container>
   );
