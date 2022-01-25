@@ -25,7 +25,7 @@ export const CampSection = ({ title, camps, isHeadField = false }: IProps) => {
 
 const Container = styled.section`
   ${maxWidth}
-  padding: 16px 16px 48px;
+  padding: 16px 0px 48px;
   .section-title {
     ${fonts.H2};
     padding-bottom: 8px;

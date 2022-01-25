@@ -3,7 +3,7 @@ import { ICamp, ICommunity } from "types/type";
 import Nav from "components/Nav";
 import Footer from "components/Footer";
 import { Header } from "pages/Home/Header";
-import CampCard from "components/CampCard";
+import Banner from "pages/Home/Banner";
 import CommunityCard from "components/CommunityCard";
 import sqlImage from "resources/images/sqlImage.png";
 import styled from "styled-components";
@@ -52,7 +52,7 @@ export default function Home() {
         camps={saleCamps}
         isHeadField={true}
       />
-      <div>banner</div>
+      <Banner />
       <section>
         <div style={{ display: "flex", gap: "20px" }}>
           <CommunityCard community={communityMock} />
