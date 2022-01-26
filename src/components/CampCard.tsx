@@ -1,19 +1,22 @@
 import { Link } from "react-router-dom";
 import { ICamp } from "types/type";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import fonts from "styles/fonts";
 import dayjs from "dayjs";
 import { maxWidth } from "styles/mixin";
-
+import { useMediaQuery } from "react-responsive";
 interface IProps {
   camp: ICamp;
   isHeadField: boolean;
 }
 
 export default function CampCard({ camp, isHeadField }: IProps) {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 480px)",
+  });
   return (
     <Link to={`/camp/${camp.id}`}>
-      <Container bgImg={camp.thumbnail}>
+      <Container bgImg={camp.thumbnail} isMobile={isMobile}>
         <OpacityBlack />
         <div className="camp-content">
           <div className="camp-head">
@@ -29,8 +32,9 @@ export default function CampCard({ camp, isHeadField }: IProps) {
   );
 }
 
-const Container = styled.div<{ bgImg: string }>`
+const Container = styled.div<{ bgImg: string; isMobile: boolean }>`
   ${maxWidth}
+
   position: relative;
   background-image: url(${(props) => props.bgImg});
   background-size: cover;
