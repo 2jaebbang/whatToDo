@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { ICamp, ICommunity } from "types/type";
-import { Nav, Footer, CommunityCard } from "components/index";
+import { Nav, Footer, FooterM } from "components/index";
 import { Header } from "pages/Home/Header";
 import Banner from "pages/Home/Banner";
 import sqlImage from "resources/images/sqlImage.png";
@@ -8,6 +8,7 @@ import snsIcon from "resources/images/snsIcon.png";
 import styled from "styled-components";
 import CampSection from "./CampSection";
 import CommunitySection from "./CommunitySection";
+import { useMediaQuery } from "react-responsive";
 
 // import Footer from "components/Footer";
 const campMock: ICamp = {
@@ -46,7 +47,7 @@ export default function Home() {
   const [popularCamps, setPopularCamps] = useState<ICamp[]>([]);
   const [saleCamps, setSaleCamps] = useState<ICamp[]>([]);
   const [communities, setCommunites] = useState<ICommunity[]>([]);
-
+  const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
   useEffect(() => {
     setPopularCamps([campMock, campMock, campMock, campMock]);
     setSaleCamps([campMock, campMock, campMock, campMock]);
@@ -67,12 +68,20 @@ export default function Home() {
         isHeadField={true}
       />
       <Banner />
-      <CommunitySection
-        title="커뮤니티"
-        communities={communities}
-        isTopView={true}
-      />
-      <Footer />
+      {!isMobile ? (
+        <>
+          <CommunitySection
+            title="커뮤니티"
+            communities={communities}
+            isTopView={true}
+          />
+          <Footer />
+        </>
+      ) : (
+        <>
+          <FooterM />
+        </>
+      )}
     </Container>
   );
 }
