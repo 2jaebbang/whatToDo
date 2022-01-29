@@ -60,7 +60,7 @@ const Container = styled.nav<{ isScrolled: boolean }>`
     display: flex;
     align-self: center;
     justify-content: space-between;
-    padding: 20px;
+    padding: 20px 0px 20px 0px;
     gap: 20px;
   }
   .logo {
