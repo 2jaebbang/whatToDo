@@ -62,20 +62,21 @@ export const Header = () => {
             </SwiperSlide>
           ))}
         </Swiper>
+
+        {!isMobile ? (
+          <SwipeButton>
+            <img src={line} className="line" />
+            <button type="button" className="swiper-navigation-prev">
+              <img src={leftButton} />
+            </button>
+            <button type="button" className="swiper-navigation-next">
+              <img src={rightButton} />
+            </button>
+          </SwipeButton>
+        ) : (
+          <></>
+        )}
       </div>
-      {!isMobile ? (
-        <SwipeButton>
-          <img src={line} className="line" />
-          <button type="button" className="swiper-navigation-prev">
-            <img src={leftButton} />
-          </button>
-          <button type="button" className="swiper-navigation-next">
-            <img src={rightButton} />
-          </button>
-        </SwipeButton>
-      ) : (
-        <></>
-      )}
     </Container>
   );
 };
@@ -87,6 +88,7 @@ const Container = styled.header<{ bgImg: string; isMobile: boolean }>`
   margin-bottom: 56px;
   .header-content {
     ${maxWidth}
+    position: relative;
     ${(props) =>
       !props.isMobile &&
       css`
@@ -102,12 +104,13 @@ const Container = styled.header<{ bgImg: string; isMobile: boolean }>`
     font-weight: bold;
     font-size: 48px;
     line-height: 56px;
+    padding: 0px 0px 30px 0px;
     ${(props) =>
       props.isMobile &&
       css`
         ${fonts.H2}
         padding-bottom: 18px;
-      `}
+      `};
   }
   .header-img {
     flex: 2;
@@ -129,6 +132,8 @@ const Container = styled.header<{ bgImg: string; isMobile: boolean }>`
 const SwipeButton = styled.div`
   ${maxWidth}
   display: flex;
+  position: absolute;
+  bottom: -10px;
   .line {
     width: 230px;
     height: 1px;
