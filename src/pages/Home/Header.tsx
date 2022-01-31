@@ -98,6 +98,7 @@ const Container = styled.header<{ bgImg: string; isMobile: boolean }>`
       `}
   }
   .header-text {
+    min-width: 290px;
     flex: 1;
     white-space: pre-line;
     color: #ffffff;
