@@ -10,27 +10,7 @@ import CampSection from "./CampSection";
 import CommunitySection from "./CommunitySection";
 import { useMediaQuery } from "react-responsive";
 import { getCampByType } from "apis/campApi";
-
-const communityMock: ICommunity = {
-  id: 0,
-  category: "취업고민",
-  title: "합격 메일 답장 어떻게 할까요?",
-  content: "고칠 부분이 있는지 봐주시면 감사하겠습니다!",
-  comments: [
-    {
-      id: 0,
-      nickName: "멘토1342",
-      profile: snsIcon,
-      content: "안녕하세요 먼저 면접까지 본 사람으로",
-    },
-    {
-      id: 1,
-      nickName: "멘토1342",
-      profile: snsIcon,
-      content: "안녕하세요 먼저 면접까지 본 사람으로",
-    },
-  ],
-};
+import { getCommunities } from "apis/communityApi";
 
 export default function Home() {
   const [popularCamps, setPopularCamps] = useState<ICamp[]>([]);
@@ -40,12 +20,16 @@ export default function Home() {
   useEffect(() => {
     fetchCamps("popular");
     fetchCamps("sale");
-    setCommunites([communityMock, communityMock, communityMock, communityMock]);
+    fetchCommunities();
   }, []);
 
   const fetchCamps = async (type: CampType) => {
     const camps = await getCampByType(type);
     type === "popular" ? setPopularCamps(camps) : setSaleCamps(camps);
+  };
+  const fetchCommunities = async function () {
+    const communities = await getCommunities();
+    setCommunites(communities);
   };
   return (
     <Container>
