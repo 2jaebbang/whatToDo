@@ -13,7 +13,7 @@ export interface ICamp {
 
 export interface ICommunity {
   id: number;
-  category: "취업고민";
+  tags: string[];
   title: string;
   content: string;
   comments: IComment[];
