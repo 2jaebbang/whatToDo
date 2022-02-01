@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { ICamp, ICommunity } from "types/type";
+import { CampType, ICamp, ICommunity } from "types/type";
 import { Nav, Footer, FooterM } from "components/index";
 import { Header } from "pages/Home/Header";
 import Banner from "pages/Home/Banner";
@@ -9,18 +9,7 @@ import styled from "styled-components";
 import CampSection from "./CampSection";
 import CommunitySection from "./CommunitySection";
 import { useMediaQuery } from "react-responsive";
-
-// import Footer from "components/Footer";
-const campMock: ICamp = {
-  id: 0,
-  type: "인기",
-  status: "모집중",
-  category: "IT",
-  skill: "SQL",
-  title: "개발자 없이 SQL로 데이터 추출하고 대시보드 만들기",
-  thumbnail: sqlImage,
-  dateStart: "2022-02-13",
-};
+import { getCampByType } from "apis/campApi";
 
 const communityMock: ICommunity = {
   id: 0,
@@ -49,10 +38,15 @@ export default function Home() {
   const [communities, setCommunites] = useState<ICommunity[]>([]);
   const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
   useEffect(() => {
-    setPopularCamps([campMock, campMock, campMock, campMock]);
-    setSaleCamps([campMock, campMock, campMock, campMock]);
+    fetchCamps("popular");
+    fetchCamps("sale");
     setCommunites([communityMock, communityMock, communityMock, communityMock]);
   }, []);
+
+  const fetchCamps = async (type: CampType) => {
+    const camps = await getCampByType(type);
+    type === "popular" ? setPopularCamps(camps) : setSaleCamps(camps);
+  };
   return (
     <Container>
       <Nav />
