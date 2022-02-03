@@ -14,13 +14,13 @@ export default function CommunityCard({ community, isTopView }: IProps) {
       <div className="community-tag-container">
         {isTopView ? (
           <CommunityTag bgColor={colors.primary1} style={{ color: "white" }}>
-            조회수 TOP
+            {community.tags[0]}
           </CommunityTag>
         ) : (
           <></>
         )}
 
-        <CommunityTag bgColor={colors.gray5}>{community.category}</CommunityTag>
+        <CommunityTag bgColor={colors.gray5}>{community.tags[1]}</CommunityTag>
       </div>
       <div className="community-title">{community.title}</div>
       <div className="community-content">{community.content}</div>
@@ -41,6 +41,7 @@ export default function CommunityCard({ community, isTopView }: IProps) {
 }
 
 const Container = styled.div`
+  flex: 1;
   background-size: "cover";
   background-position: "center";
   padding: "20px";
@@ -96,6 +97,7 @@ const CommentSection = styled.div`
   .comment-profile {
     width: 30px;
     height: 30px;
+    border-radius: 15px;
   }
   .comment-info {
     width: 140px;
