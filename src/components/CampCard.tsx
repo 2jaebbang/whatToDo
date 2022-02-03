@@ -20,11 +20,11 @@ export default function CampCard({ camp, isHeadField }: IProps) {
         <OpacityBlack />
         <div className="camp-content">
           <div className="camp-head">
-            {isHeadField ? `${camp.category}/${camp.skill}` : camp.status}
+            {isHeadField ? `${camp.field}/${camp.skill}` : camp.status}
           </div>
-          <div className="camp-title">{camp.title}</div>
+          <div className="camp-title">{camp.name}</div>
           <div className="camp-start-date">
-            {dayjs(camp.dateStart).format("M월 DD일부터")}
+            {dayjs(camp.startDate).format("M월 DD일부터")}
           </div>
         </div>
       </Container>
