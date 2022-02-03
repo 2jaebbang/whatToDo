@@ -26,15 +26,7 @@ export default function CommunityCard({ community, isTopView }: IProps) {
       <div className="community-title">{community.title}</div>
       <div className="community-content">{community.content}</div>
       {community.comments.map((comment, index) => (
-        <CommentSection key={index}>
-          <div>
-            <img className="comment-profile" src={comment.profile}></img>
-          </div>
-          <div className="comment-info">
-            <div className="comment-name">{comment.nickname}</div>
-            <div className="comment-content">{comment.content}</div>
-          </div>
-        </CommentSection>
+        <Comment key={index} comment={comment} />
       ))}
       <div className="more-comments">+더보기</div>
     </Container>
