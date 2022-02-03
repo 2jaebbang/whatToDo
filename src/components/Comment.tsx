@@ -3,6 +3,10 @@ import fonts from "styles/fonts";
 import { IComment } from "types/type";
 
 export default function Comment({ comment }: { comment: IComment }) {
+  const content =
+    comment.content.length > 12
+      ? `${comment.content.substring(0, 12)}...`
+      : comment.content;
   return (
     <Container>
       <div>
@@ -10,7 +14,7 @@ export default function Comment({ comment }: { comment: IComment }) {
       </div>
       <div>
         <div className="comment-nickname">{comment.nickname}</div>
-        <div className="comment-content">{comment.content}</div>
+        <div className="comment-content">{content}</div>
       </div>
     </Container>
   );
