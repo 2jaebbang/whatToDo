@@ -3,6 +3,7 @@ import { ICommunity } from "types/type";
 import styled from "styled-components";
 import colors from "styles/colors";
 import fonts from "styles/fonts";
+import Comment from "./Comment";
 interface IProps {
   community: ICommunity;
   isTopView: boolean;
@@ -23,30 +24,9 @@ export default function CommunityCard({
       </div>
       <div className="community-title">{community.title}</div>
       <div className="community-content">{community.content}</div>
-      <CommentSection>
-        <div>
-          <img
-            className="comment-profile"
-            src={community.comments[0].profile}
-          ></img>
-        </div>
-        <div className="comment-info">
-          <div className="comment-name">{community.comments[0].nickName}</div>
-          <div className="comment-content">{community.comments[0].content}</div>
-        </div>
-      </CommentSection>
-      <CommentSection>
-        <div>
-          <img
-            className="comment-profile"
-            src={community.comments[0].profile}
-          ></img>
-        </div>
-        <div className="comment-info">
-          <div className="comment-name">{community.comments[0].nickName}</div>
-          <div className="comment-content">{community.comments[0].content}</div>
-        </div>
-      </CommentSection>
+      {community.comments.map((comment, index) => (
+        <Comment key={index} comment={comment} />
+      ))}
       <div className="more-comments">+더보기</div>
     </Container>
   );
