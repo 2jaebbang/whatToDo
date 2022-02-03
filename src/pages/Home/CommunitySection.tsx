@@ -18,7 +18,7 @@ export default function CommunitySection({
   return (
     <Container>
       <div className="section-title">{title}</div>
-      <div className="flex">
+      <div className="cards">
         {communities.map((community, index) => (
           <CommunityCard
             key={index}
@@ -33,14 +33,17 @@ export default function CommunitySection({
 
 const Container = styled.section`
   ${maxWidth}
-  padding: 16px 0px 240px;
+  padding: 0px 24px 48px;
+
   .section-title {
     ${fonts.H2};
     padding-bottom: 8px;
   }
-  .flex {
+  .cards {
     display: flex;
-    justify-content: space-between;
     gap: 20px;
+    a {
+      flex: 1;
+    }
   }
 `;

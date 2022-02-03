@@ -4,6 +4,7 @@ import styled from "styled-components";
 import colors from "styles/colors";
 import fonts from "styles/fonts";
 import Comment from "./Comment";
+import { Link } from "react-router-dom";
 interface IProps {
   community: ICommunity;
   isTopView: boolean;
@@ -11,38 +12,43 @@ interface IProps {
 
 export default function CommunityCard({ community, isTopView }: IProps) {
   return (
-    <Container>
-      <div className="community-tag-container">
-        {isTopView ? (
-          <CommunityTag bgColor={colors.primary1} style={{ color: "white" }}>
-            {community.tags[0]}
+    <Link to={`/community/${community.id}`}>
+      <Container>
+        <div className="community-tag-container">
+          {isTopView ? (
+            <CommunityTag bgColor={colors.primary1} style={{ color: "white" }}>
+              {community.tags[0]}
+            </CommunityTag>
+          ) : (
+            <></>
+          )}
+          <CommunityTag bgColor={colors.gray5}>
+            {community.tags[1]}
           </CommunityTag>
-        ) : (
-          <></>
-        )}
+        </div>
 
-        <CommunityTag bgColor={colors.gray5}>{community.tags[1]}</CommunityTag>
-      </div>
-      <div className="community-title">{community.title}</div>
-      <div className="community-content">{community.content}</div>
-      {community.comments.map((comment, index) => (
-        <Comment key={index} comment={comment} />
-      ))}
-      <div className="more-comments">+더보기</div>
-    </Container>
+        <div className="community-title">{community.title}</div>
+        <CotentCommentContainer>
+          <div className="community-content">{community.content}</div>
+          <CommentSection>
+            {community.comments.map((comment, index) => (
+              <Comment key={index} comment={comment} />
+            ))}
+          </CommentSection>
+        </CotentCommentContainer>
+        <div className="more-comments">+더보기</div>
+      </Container>
+    </Link>
   );
 }
 
 const Container = styled.div`
-  flex: 1;
-  background-size: "cover";
-  background-position: "center";
-  padding: "20px";
+  padding: "10px";
   height: 320px;
+
+  border: 1px solid #cccccc;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  border-color: ${colors.gray4};
-  border-style: solid;
-  border-width: 1px;
 
   .community-tag-container {
     display: flex;
@@ -65,11 +71,11 @@ const Container = styled.div`
   }
   .community-content {
     ${fonts.Body2}
-    padding: 4px 10px 58px;
+    padding: 4px 10px 0px;
   }
   .more-comments {
     text-align: center;
-    padding: 8px 0px 16px 0px;
+    padding: 0px 0px 16px 0px;
     color: ${colors.secondary1};
     ${fonts.Caption}
   }
@@ -83,26 +89,13 @@ const CommunityTag = styled.div<{ bgColor: string }>`
   border-radius: 4px;
 `;
 
-const CommentSection = styled.div`
-  padding: 8px 16px;
+const CotentCommentContainer = styled.div`
   display: flex;
-  gap: 8px;
-  .comment-profile {
-    width: 30px;
-    height: 30px;
-    border-radius: 15px;
-  }
-  .comment-info {
-    width: 140px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .comment-name {
-    ${fonts.Body2}
-    font-weight: bold;
-  }
-  .comment-content {
-    ${fonts.Caption}
-  }
+  flex-direction: column;
+  justify-content: space-between;
+  height: 220px;
+`;
+
+const CommentSection = styled.div`
+  padding: 4px 10px;
 `;
