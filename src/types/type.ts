@@ -1,17 +1,19 @@
+export type CampType = "popular" | "sale";
+export type CampStatus = "모집전" | "모집중" | "모집완료";
 export interface ICamp {
   id: number;
-  type: "인기" | "할인";
-  status: "모집전" | "모집중" | "모집완료";
-  category?: string;
+  type: CampType;
+  status: CampStatus;
+  field?: string;
   skill?: string;
-  title: string;
+  name: string;
   thumbnail: string;
-  dateStart: string;
+  startDate: string;
 }
 
 export interface ICommunity {
   id: number;
-  category: "취업고민";
+  tags: string[];
   title: string;
   content: string;
   comments: IComment[];

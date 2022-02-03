@@ -3,6 +3,7 @@ import styled from "styled-components";
 import fonts from "styles/fonts";
 import { maxWidth } from "styles/mixin";
 import { ICamp } from "types/type";
+import { useMediaQuery } from "react-responsive";
 
 interface IProps {
   title: string;
@@ -10,29 +11,45 @@ interface IProps {
   isHeadField?: boolean;
 }
 
-export const CampSection = ({ title, camps, isHeadField = false }: IProps) => {
+export default function CampSection({
+  title,
+  camps,
+  isHeadField = false,
+}: IProps) {
+  const isMobile = useMediaQuery({
+    query: "(max-width: 480px)",
+  });
   return (
-    <Container>
+    <Container isMobile={isMobile}>
       <div className="section-title">{title}</div>
-      <div className="flex">
+      <div className={isMobile ? "mobile" : "desktop"}>
         {camps.map((camp, index) => (
           <CampCard key={index} camp={camp} isHeadField={isHeadField} />
         ))}
       </div>
     </Container>
   );
-};
+}
 
-const Container = styled.section`
+const Container = styled.section<{ isMobile: boolean }>`
   ${maxWidth}
-  padding: 16px 0px 48px;
+  padding: ${(props) => (props.isMobile ? "0px 24px 56px" : "0px 24px 48px")};
   .section-title {
     ${fonts.H2};
-    padding-bottom: 8px;
+    padding-bottom: ${(props) => (props.isMobile ? "20px" : "8px")};
   }
-  .flex {
+  .desktop {
+    a {
+      flex: 1;
+    }
     display: flex;
     justify-content: space-between;
     gap: 20px;
+  }
+  .mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 8px;
   }
 `;
