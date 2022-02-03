@@ -19,7 +19,7 @@ export interface ICommunity {
 
 export interface IComment {
   id: number;
-  nickName: string;
+  nickname: string;
   profile: string;
   content: string;
 }
