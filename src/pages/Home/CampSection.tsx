@@ -39,6 +39,9 @@ const Container = styled.section<{ isMobile: boolean }>`
     padding-bottom: ${(props) => (props.isMobile ? "20px" : "8px")};
   }
   .desktop {
+    a {
+      flex: 1;
+    }
     display: flex;
     justify-content: space-between;
     gap: 20px;
