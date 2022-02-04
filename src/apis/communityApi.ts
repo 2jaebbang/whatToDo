@@ -5,7 +5,7 @@ const serverApi = axios.create({
 });
 
 export const getCommunities = async () => {
-  const response = await serverApi.get(`/communities`);
+  const response = await serverApi.get(`/api/communities`);
   try {
     return response.data.data;
   } catch (error) {
