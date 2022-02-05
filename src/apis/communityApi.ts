@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const serverApi = axios.create({
-  baseURL: process.env.REACT_APP_API_URL,
+  baseURL: process.env.REACT_APP_SERVER_URL,
 });
 
 export const getCommunities = async () => {
