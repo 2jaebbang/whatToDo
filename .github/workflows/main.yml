@@ -9,11 +9,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      REACT_APP_SERVER_URL: ${{secrets.API_URL}}
 
     steps:
       - uses: actions/checkout@v2
 
       - name: Deploy react app to github pages
         uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
+        env:
+          REACT_APP_SERVER_URL: ${{secrets.API_URL}}
