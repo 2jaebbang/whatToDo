@@ -6,17 +6,15 @@ on:
   pull_request:
     branches: [master]
 
+env:
+  REACT_APP_SERVER_URL: ${{secrets.API_URL}}
+
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Build app
-        run: yarn build
-        env:
-          REACT_APP_SERVER_URL: ${{secrets.API_URL}}
 
       - name: Deploy react app to github pages
         uses: tanwanimohit/deploy-react-to-ghpages@v1.0.1
