@@ -5,23 +5,31 @@ import ApplyDeadline from "./ApplyDeadline";
 export default function DetailBanner() {
   return (
     <Container>
-      <BannerCard />
-      <ApplyDeadline />
+      <div className="banner-container">
+        <BannerCard />
+      </div>
+      <div className="deadline-container">
+        <ApplyDeadline />
+      </div>
     </Container>
   );
 }
 
 const Container = styled.div`
-  ${maxWidth}
+  position: fixed;
+  width: 100%;
+  top: 105px;
 
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  height: 280px;
-
-  border-radius: 10px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  .banner-container {
+    ${maxWidth}
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+  .deadline-container {
+    ${maxWidth}
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
 `;
