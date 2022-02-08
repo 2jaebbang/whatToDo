@@ -32,16 +32,19 @@ export default {
     font-size: 16px;
     line-height: 20px;
     letter-spacing: -0.01em;
+    font-weight: bold;
   `,
   Body2: css`
     font-size: 14px;
     line-height: 18px;
     letter-spacing: -0.01em;
+    font-weight: bold;
   `,
   Caption: css`
     font-weight: 500;
     font-size: 12px;
     line-height: 14px;
     letter-spacing: -0.01em;
+    font-weight: bold;
   `,
 };
