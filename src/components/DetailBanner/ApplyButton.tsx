@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import fonts from "styles/fonts";
 import colors from "styles/colors";
+import { Link } from "react-router-dom";
 
 export default function ApplyButton() {
-  return <Container>더 잘하는 개발자 되기</Container>;
+  return (
+    <Link to={``}>
+      <Container>더 잘하는 개발자 되기</Container>
+    </Link>
+  );
 }
 
 const Container = styled.div`
