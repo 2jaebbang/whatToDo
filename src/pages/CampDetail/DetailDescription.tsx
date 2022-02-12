@@ -1,10 +1,13 @@
-import styled from "styled-components";
+import { useContext } from "react";
+import CampStore from "stores/CampStore";
+import styled, { css } from "styled-components";
 import fonts from "styles/fonts";
 import DetailSection from "./DetailSection";
 
 export default function DetailDescription() {
+  const campStore = useContext(CampStore);
   return (
-    <Container>
+    <Container images={campStore.targetCamp!.images}>
       <DetailSection>
         <div className="main-description-image" />
         <div className="sub-description">
@@ -22,7 +25,7 @@ export default function DetailDescription() {
   );
 }
 
-const Container = styled.div`
+const Container = styled.div<{ images: string[] }>`
   background-color: white;
 
   .main-description-image {
@@ -31,7 +34,11 @@ const Container = styled.div`
     margin: 20px 0px 60px 0px;
     background-size: cover;
     background-position: center;
-    background-image: url("https://cdn.comento.kr/images/pt/tmp/prefix_cDkHsa2N1M.png");
+
+    ${(props) =>
+      css`
+        background-image: url(${props.images[0]});
+      `}
   }
 
   .sub-description {
@@ -46,14 +53,20 @@ const Container = styled.div`
       height: 350px;
       background-size: cover;
       background-position: center;
-      background-image: url("https://cdn.comento.kr/images/pt/tmp/prefix_52iAfyrV8h.png");
+      ${(props) =>
+        css`
+          background-image: url(${props.images[1]});
+        `}
     }
     .sub-description-capture-image {
       width: 100%;
       height: 1200px;
       background-size: cover;
       background-position: center;
-      background-image: url("https://cdn.comento.kr/images/pt/tmp/prefix_YXtp1mMNl0.png");
+      ${(props) =>
+        css`
+          background-image: url(${props.images[2]});
+        `}
     }
   }
 `;
