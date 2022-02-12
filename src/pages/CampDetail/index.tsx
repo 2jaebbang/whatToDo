@@ -1,4 +1,3 @@
-import React from "react";
 import { Nav, Footer } from "components/index";
 import styled from "styled-components";
 import FAQ from "./FAQ";
@@ -8,26 +7,49 @@ import LiveDetail from "./LiveDetail";
 import DetailDescription from "./DetailDescription";
 import Review from "./Review";
 import DetailBanner from "components/DetailBanner";
+import { observer } from "mobx-react-lite";
+import { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import CampStore from "stores/CampStore";
+import Skeleton from "components/Skeleton";
 
-export default function CampDetail() {
-  return (
-    <Container>
-      <Nav />
-      <DetailBanner />
-      <div className="headerContainer">
-        <Header bgImg={require("resources/images/homeHeaderBackground.jpg")}>
-          <TitleImage />
-        </Header>
+const CampDetail = () => {
+  const { campId } = useParams();
+  const campStore = useContext(CampStore);
+  useEffect(() => {
+    campStore.fetchCampById(Number(campId));
+  }, []);
+  if (campStore.targetCamp) {
+    return (
+      <Container>
+        <Nav />
+        <DetailBanner />
+        <div className="headerContainer">
+          <Header bgImg={require("resources/images/homeHeaderBackground.jpg")}>
+            <TitleImage />
+          </Header>
+        </div>
+        <LiveDetail />
+        <DetailDescription />
+        <Review />
+        <CurriculumPoint />
+        <FAQ />
+        <Footer />
+      </Container>
+    );
+  } else {
+    return (
+      <div>
+        <Skeleton
+          style={{ width: "100%", height: 280, borderRadius: "10px" }}
+          animated
+        />
       </div>
-      <LiveDetail />
-      <DetailDescription />
-      <Review />
-      <CurriculumPoint />
-      <FAQ />
-      <Footer />
-    </Container>
-  );
-}
+    );
+  }
+};
+
+export default observer(CampDetail);
 
 const Container = styled.div`
   margin: 0 auto;
