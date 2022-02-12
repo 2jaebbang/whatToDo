@@ -2,7 +2,7 @@ import styled from "styled-components";
 import fonts from "styles/fonts";
 import colors from "styles/colors";
 
-export default function Deadline() {
+export default function ApplyDeadline() {
   return (
     <Container>
       <span className="time-deadline">0일 8시간 55분</span>
@@ -14,7 +14,7 @@ export default function Deadline() {
 const Container = styled.div`
   border-radius: 5px;
   background-color: ${colors.gray6};
-
+  width: 33%;
   margin: 20px 0px 10px 0px;
   padding: 5px 0px 5px 0px;
   ${fonts.Caption}

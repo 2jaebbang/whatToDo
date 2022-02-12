@@ -7,7 +7,8 @@
       "pages/*": ["src/pages/*"],
       "styles/*": ["src/styles/*"],
       "types/*": ["src/types/*"],
-      "resources/*": ["src/resources/*"]
+      "resources/*": ["src/resources/*"],
+      "stores/*": ["src/stores/*"]
     }
   }
 }

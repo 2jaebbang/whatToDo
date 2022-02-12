@@ -1,10 +1,10 @@
 import { css } from "styled-components";
 
 export const maxWidth = css`
-  max-width: 960px;
+  max-width: 1080px;
   margin: 0 auto;
 `;
 
 export const maxWidthDetail = css`
-  max-width: 600px;
+  max-width: 700px;
 `;

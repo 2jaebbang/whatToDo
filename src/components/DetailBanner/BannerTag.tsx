@@ -2,8 +2,12 @@ import styled from "styled-components";
 
 import fonts from "styles/fonts";
 import colors from "styles/colors";
+import { useContext } from "react";
+import CampStore from "stores/CampStore";
 
-export default function BannerTags({ tags }: { tags: string[] }) {
+export default function BannerTags() {
+  const campStore = useContext(CampStore);
+  const tags = campStore.targetCamp!.tags;
   return (
     <Container>
       {tags.map((tag, index) => (

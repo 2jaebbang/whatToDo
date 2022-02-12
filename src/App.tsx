@@ -11,7 +11,7 @@ function App() {
       <BrowserRouter basename="/whatToDo">
         <Routes>
           <Route path="/" element={<Home />}></Route>
-          <Route path="/detail/:id" element={<CampDetail />}></Route>
+          <Route path="/camp/:campId" element={<CampDetail />}></Route>
           <Route path="/apply" element={<CampApply />}></Route>
           <Route path="/community" element={<Community />}></Route>
         </Routes>
