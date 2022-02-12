@@ -1,32 +1,27 @@
-import { useState, useEffect } from "react";
-import { CampType, ICamp, ICommunity } from "types/type";
+import { useState, useEffect, useContext } from "react";
+import { ICommunity } from "types/type";
 import { Nav, Footer, FooterM, CardSectionSkeleton } from "components/index";
 import { Header } from "pages/Home/Header";
 import Banner from "pages/Home/Banner";
-import sqlImage from "resources/images/sqlImage.png";
-import snsIcon from "resources/images/snsIcon.png";
 import styled from "styled-components";
 import CampSection from "./CampSection";
 import CommunitySection from "./CommunitySection";
 import { useMediaQuery } from "react-responsive";
-import { getCampByType } from "apis/campApi";
 import { getCommunities } from "apis/communityApi";
+import CampStore from "stores/CampStore";
+import { observer } from "mobx-react-lite";
 
-export default function Home() {
-  const [popularCamps, setPopularCamps] = useState<ICamp[]>();
-  const [saleCamps, setSaleCamps] = useState<ICamp[]>();
+const Home = () => {
   const [communities, setCommunites] = useState<ICommunity[]>();
   const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
+  const campStore = useContext(CampStore);
+
   useEffect(() => {
-    fetchCamps("popular");
-    fetchCamps("sale");
+    campStore.fetchCampsPopular();
+    campStore.fetchCampsSale();
     fetchCommunities();
   }, []);
 
-  const fetchCamps = async (type: CampType) => {
-    const camps = await getCampByType(type);
-    type === "popular" ? setPopularCamps(camps) : setSaleCamps(camps);
-  };
   const fetchCommunities = async function () {
     const communities = await getCommunities();
     setCommunites(communities);
@@ -35,19 +30,19 @@ export default function Home() {
     <Container>
       <Nav />
       <Header />
-      {popularCamps ? (
+      {campStore.campPopular ? (
         <CampSection
           title="인기 부트 캠프"
-          camps={popularCamps}
+          camps={campStore.campPopular}
           isHeadField={false}
         />
       ) : (
         <CardSectionSkeleton />
       )}
-      {saleCamps ? (
+      {campStore.campSales ? (
         <CampSection
           title="특가 할인 캠프"
-          camps={saleCamps}
+          camps={campStore.campSales}
           isHeadField={true}
         />
       ) : (
@@ -74,7 +69,9 @@ export default function Home() {
       )}
     </Container>
   );
-}
+};
+
+export default observer(Home);
 
 const Container = styled.div`
   margin: 0 auto;
