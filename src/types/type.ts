@@ -28,7 +28,7 @@ export interface ICampDetail {
   startDate: string;
   thumbnail: string;
   reviews: { content: string; reviewer: string }[];
-  faqs: { question: string; answer: string }[];
+  faqs: { question: string; answer: string; isToggle: boolean }[];
 }
 
 export interface ICommunity {
