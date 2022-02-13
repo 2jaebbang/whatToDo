@@ -2,7 +2,7 @@ name: React app deployement
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   deploy:
@@ -24,9 +24,9 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          
+
         run: |
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            build s3://stage.whattodo.com
+            build s3://prod.whattodo.com
