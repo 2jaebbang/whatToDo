@@ -8,7 +8,7 @@ import Community from "pages/Community";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter basename="/whatToDo">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/camp/:campId" element={<CampDetail />}></Route>
