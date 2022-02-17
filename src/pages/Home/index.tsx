@@ -1,5 +1,4 @@
 import { useState, useEffect, useContext } from "react";
-import { ICommunity } from "types/type";
 import { Nav, Footer, FooterM, CardSectionSkeleton } from "components/index";
 import { Header } from "pages/Home/Header";
 import Banner from "pages/Home/Banner";
@@ -7,25 +6,21 @@ import styled from "styled-components";
 import CampSection from "./CampSection";
 import CommunitySection from "./CommunitySection";
 import { useMediaQuery } from "react-responsive";
-import { getCommunities } from "apis/communityApi";
 import CampStore from "stores/CampStore";
+import CommunitiesStore from "stores/CommunityStore";
 import { observer } from "mobx-react-lite";
 
 const Home = () => {
-  const [communities, setCommunites] = useState<ICommunity[]>();
   const isMobile = useMediaQuery({ query: "(max-width: 480px)" });
   const campStore = useContext(CampStore);
+  const communityStore = useContext(CommunitiesStore);
 
   useEffect(() => {
     campStore.fetchCampsPopular();
     campStore.fetchCampsSale();
-    fetchCommunities();
+    communityStore.fetchCommunities();
   }, []);
 
-  const fetchCommunities = async function () {
-    const communities = await getCommunities();
-    setCommunites(communities);
-  };
   return (
     <Container>
       <Nav />
@@ -51,10 +46,10 @@ const Home = () => {
       <Banner />
       {!isMobile ? (
         <>
-          {communities ? (
+          {communityStore.communities ? (
             <CommunitySection
               title="커뮤니티"
-              communities={communities}
+              communities={communityStore.communities}
               isTopView={true}
             />
           ) : (
