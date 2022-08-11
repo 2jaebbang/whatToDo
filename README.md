@@ -1,5 +1,5 @@
 <h1 align="middle">What To Do</h1>
-<h3 align="middle">간편한 온라인 코스 신청 웹 서비스</h3>
+<h3 align="middle">간편한 교육 커뮤니티 플랫폼</h3>
 
 <br/>
 
